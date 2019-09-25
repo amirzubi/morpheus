@@ -1,0 +1,1 @@
+Ich würde gerne aktuelle Zahlen von Coinmarketcap.com in einer Liste speichern, um diese auf einer eigenen Webseite verwenden zu können. Die Daten sollten sich automatisch aktualisieren.
