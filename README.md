@@ -9,7 +9,7 @@ Der User kann Kryptowährungen dem Portfolio hinzufügen oder löschen. Er kann 
 ## Datenverarbeitung/Speicherung
 Die Kursdaten werden der Webseite https://coinmarketcap.com entnommen. Die Daten sollten sich automatisch bei einer Kursänderung aktualisieren. Die Portfolioeinträge des Users werden in einer .json Datei gesichert.
 ## Datenausgabe
-Die Webapplikation sollte die aktuellen Kurse und den Totalwert der einzelnen Portfolioeinträge wiedergeben. Dabei wird folgendes gerechnet:<br><br>```betrag_bitcoin * kurs_bitcoin```<br><br>
-Zusätzlich sollte der Gesamtwert des Portfolios ausgegeben werden. Dabei wird folgendes gerechnet:<br><br>    (Betrag Kryptowährung 1 * Kurs Kryptowährung 1) + (Betrag Kryptowährung 2 * Kurs Kryptowährung 2)... 
+Die Webapplikation sollte die aktuellen Kurse und den Totalwert der einzelnen Portfolioeinträge wiedergeben. Dabei wird folgendes gerechnet (Beispiel):<br>```betrag_bitcoin * kurs_bitcoin```<br><br>
+Zusätzlich sollte der Gesamtwert des Portfolios ausgegeben werden. Dabei wird folgendes gerechnet (Beispiel):<br>```gesamtwert_portfolio = (betrag_bitcoin * kurs_bitcoin) + (betrag_ethereum * kurs_ethereum)...```
 
 ![alt text](flowchart.png)
