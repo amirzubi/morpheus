@@ -11,4 +11,4 @@ Die Daten sollten sich automatisch bei einer Kursänderung, oder falls dies zu k
 ## Datenausgabe
 Die Datenausgabe erfolgt über eine Webaplikation, welche durch eine Funktion die Kursdaten aus der .json-Datei entnimmt und  im Währungsrechner ausgibt.
 
-![alt text](https://github.com/amirpython/PROG2/blob/master/flowchart.png)
+![alt text](flowchart.png)
