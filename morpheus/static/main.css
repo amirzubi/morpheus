@@ -10,7 +10,17 @@ body {
     color: #ffffff;
     font-size: 20px;
     font-weight: 400;
-    ;
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+p {
+    margin-top: 5px;
+    font-size: 20px;
+    color: rgb(153, 153, 153);
 }
 
 header {
@@ -82,17 +92,6 @@ nav {
     margin: auto;
 }
 
-.intro-text h1 {
-    font-size: 60px;
-    font-weight: 700;
-}
-
-.intro-text p {
-    margin-top: 5px;
-    font-size: 20px;
-    color: rgb(153, 153, 153);
-}
-
 .button {
     padding: 50px 0px 0px 0px;
 }
@@ -129,6 +128,8 @@ nav {
     background-color: #000000;
 }
 
+
+/* Portfolio */
 .portfolio {
     display: flex;
     width: 100%;
@@ -140,10 +141,15 @@ nav {
 .content_box {
     width: 100%;
     margin: 0px auto;
-    text-align: center;
-    padding: 100px auto 100px auto;
+    padding: 100px 100px 100px 100px;
     background-color: rgb(17, 26, 25);
 }
+
+.content_portfolio {
+    text-align: center;
+}
+
+
 
 
 @media screen and (max-width: 1024px) {
