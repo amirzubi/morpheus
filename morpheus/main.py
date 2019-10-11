@@ -5,7 +5,7 @@ from flask import request
 import requests
 import json
 
-app = Flask("Cryptocurrency Portfolio") 
+app = Flask("Morpheus") 
 
 # API von coinmarketcap.com
 globalURL = "https://api.coinmarketcap.com/v1/global/"
