@@ -1,3 +1,7 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
 h1 {
     color: #040309;
     font-size: 64px;
@@ -6,6 +10,7 @@ h1 {
 h2 {
     color: #040309;
     font-size: 50px;
+    font: "Arial"
 }
 
 h3 {
@@ -23,8 +28,13 @@ a {
     font-size: 22px;
 }
 
+.container {
+    width: 60%;
+    margin: auto;
+}
+
 .info_box {
     padding: 50px;
     background-color: rgba(49, 123, 140, 1);
-    color: #ffffff;
+    color: #ffffff !important;
 }

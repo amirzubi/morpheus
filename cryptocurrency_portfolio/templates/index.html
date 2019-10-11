@@ -4,13 +4,19 @@
 <head>
     <meta charset="utf-8">
     <title>Cryptocurrency Portfolio</title>
-    <link rel="stylesheet" href="{{ url_for('static',
-filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
+    <!--  Font Einbindung -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="info_box">
-        <h1>Gesamtmarktkapitalisierung: {{ globalMarketCap }}!</h1>
+    <div class="container">
+        <h1>Cryptocurrency Portfolio</h1>
+        <h2>Dein privates und sicheres Portfolio.</h2>
+        <div class="info_box">
+            <p>Gesamtmarktkapitalisierung: ${{ globalMarketCap }} </p>
+        </div>
     </div>
 </body>
 
