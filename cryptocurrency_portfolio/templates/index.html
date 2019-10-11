@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Cryptocurrency Portfolio</title>
+    <title>Morpheus</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 
     <!--  Font Einbindung -->
@@ -11,13 +11,54 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Cryptocurrency Portfolio</h1>
-        <h2>Dein privates und sicheres Portfolio.</h2>
-        <div class="info_box">
-            <p>Gesamtmarktkapitalisierung: ${{ globalMarketCap }} </p>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo_icon.svg') }}" alt="logo" />
+            <h4 class="logo">Morpheus<br>
+            </h4>
         </div>
-    </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a class="nav-link" href="#">Portfolio</a></li>
+                <li><a class="nav-link" href="#">Anleitung</a></li>
+                <li><a class="nav-link" href="#">Kontakt</a></li>
+            </ul>
+        </nav>
+        <div class="github_icon">
+            <a href="https://github.com/amirpython/PROG2">
+                <img src="{{ url_for('static', filename='github.svg') }}" alt="github" />
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="titelseite">
+            <div class="container">
+                <div class="intro-text">
+                    <h5>Portfolio Gesamtwert</h5>
+                    <h1>${{ globalMarketCap }}</h1>
+                    <p>24h Veränderung: ${{ globalMarketCap }} </p>
+                </div>
+                <div class="button">
+                    <button class="button_filled">Alles anzeigen</button>
+                    <button class="button_border">Neuer Eintrag</button>
+                </div>
+            </div>
+        </section>
+        <section class="portfolio">
+            <div class="content_box">
+                <div class="intro-text">
+                    <h5>Portfolio Gesamtwert</h5>
+                    <h1>${{ globalMarketCap }}</h1>
+                    <p>24h Veränderung: ${{ globalMarketCap }} </p>
+                </div>
+                <div class="button">
+                    <button class="button_filled">Alles anzeigen</button>
+                    <button class="button_border">Neuer Eintrag</button>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>

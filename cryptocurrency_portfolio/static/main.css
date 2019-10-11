@@ -1,40 +1,171 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 400;
+    ;
 }
 
-h1 {
-    color: #040309;
-    font-size: 64px;
+header {
+    display: flex;
+    width: 100%;
+    padding: 0 50px 0 50px;
+    height: 10vh;
+    align-items: center;
+    position: fixed;
+    background-color: #000000;
+    z-index: 100;
 }
 
-h2 {
-    color: #040309;
-    font-size: 50px;
-    font: "Arial"
+.logo-container,
+.nav-links,
+.github_icon {
+    display: flex;
 }
 
-h3 {
-    color: #040309;
-    font-size: 40px;
+.logo-container {
+    flex: 1;
 }
 
-p {
-    color: #040309;
-    font-size: 22px;
+.logo-container img {
+    height: 30px;
+    width: auto;
 }
 
-a {
-    rgba(49, 123, 140, 1);
-    font-size: 22px;
+.logo {
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: auto 0 auto 20px;
+    letter-spacing: 7px;
+}
+
+nav {
+    flex: 2;
+}
+
+.nav-links {
+    justify-content: space-around;
+    list-style: none;
+}
+
+.nav-link {
+    color: rgb(153, 153, 153);
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: rgb(255, 255, 255);
+}
+
+.github_icon {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.github_icon img {
+    width: 50px;
+    height: auto;
 }
 
 .container {
-    width: 60%;
+    width: 80%;
     margin: auto;
 }
 
-.info_box {
-    padding: 50px;
-    background-color: rgba(49, 123, 140, 1);
-    color: #ffffff !important;
+.intro-text h1 {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.intro-text p {
+    margin-top: 5px;
+    font-size: 20px;
+    color: rgb(153, 153, 153);
+}
+
+.button {
+    padding: 50px 0px 0px 0px;
+}
+
+.button_filled {
+    background: #00AE99;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    color: white;
+}
+
+.button_border {
+    border: 1px solid rgb(153, 153, 153);
+    background: transparent;
+    color: rgb(255, 255, 255);
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 30px 0px 0px 30px;
+}
+
+.titelseite {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    height: 100vh;
+    align-items: center;
+    background-color: #000000;
+}
+
+.portfolio {
+    display: flex;
+    width: 100%;
+    padding: 0 50px 0 50px;
+    align-items: center;
+    background-color: #000000;
+}
+
+.content_box {
+    width: 100%;
+    margin: 0px auto;
+    text-align: center;
+    padding: 100px auto 100px auto;
+    background-color: rgb(17, 26, 25);
+}
+
+
+@media screen and (max-width: 1024px) {
+    .titelseite {
+        flex-direction: column;
+    }
+
+    .introduction {
+        margin-top: 5vh;
+        text-align: center;
+    }
+
+    .intro-text h1 {
+        font-size: 30px;
+    }
+
+    .intro-text p {
+        font-size: 18px;
+    }
+
+    .button {
+        padding: 10px 0px 0px 0px;
+    }
+
 }
