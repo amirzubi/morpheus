@@ -1,3 +1,30 @@
 h1 {
-    color: green;
+    color: #040309;
+    font-size: 64px;
+}
+
+h2 {
+    color: #040309;
+    font-size: 50px;
+}
+
+h3 {
+    color: #040309;
+    font-size: 40px;
+}
+
+p {
+    color: #040309;
+    font-size: 22px;
+}
+
+a {
+    rgba(49, 123, 140, 1);
+    font-size: 22px;
+}
+
+.info_box {
+    padding: 50px;
+    background-color: rgba(49, 123, 140, 1);
+    color: #ffffff;
 }
