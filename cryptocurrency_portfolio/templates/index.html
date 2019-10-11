@@ -1,4 +1,16 @@
-<form method="POST">
-    <input type="text" name="vorname" placeholder="Bitte geben Sie Ihren Namen ein">
-    <button type="submit">Senden</button>
-</form>
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>Cryptocurrency Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static',
+filename='main.css') }}">
+</head>
+
+<body>
+    <h1>Marktkapitalisierung: {{ globalMarketCap }}!</h1>
+    <a href="{{ url_for('test')}}">Test</a>
+</body>
+
+</html>
