@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
@@ -43,7 +42,6 @@
                 <a href="#">Passwort vergessen?</a>
             </small>
         </form>
-    </div>
     <div class="border-top pt-3">
         <small class="text-muted">
             Noch keinen Account? <a class="ml-2" href="{{ url_for('register') }}">Jetzt registrieren</a>

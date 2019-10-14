@@ -51,9 +51,9 @@ a:hover {
 
 .content-section {
   background: rgb(17, 26, 25);
-  padding: 50px 50px;
+  padding: 50px 0px 50px 0px;
   border: none;
-  margin: 30px auto;
+  margin: 110px auto 30px auto;
   width: calc(100% - 60px);
 }
 
@@ -68,22 +68,11 @@ a:hover {
   font-size: 2.5rem;
 }
 
-.button_filled {
-    background: #00AE99;
-    width: 150px;
-    height: 50px;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 500;
-    border: none;
-    color: white;
-}
-
-
 /* Buttons */
 
 .btn {
-  padding: 10px 20px 10px 20px;
+  margin: 0px;
+  height: 50px;
   border-radius: 0px;
 }
 
@@ -99,4 +88,8 @@ a:hover {
   border: none;
   background: #04BEA8;
   font-size: 20px;
+}
+
+.btn a{
+  margin: auto 0px;
 }
