@@ -1,64 +1,15 @@
-<!DOCTYPE html>
-<html lang="de">
-
-<head>
-    <meta charset="utf-8">
-    <title>Morpheus</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-
-    <!--  Font Einbindung -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <header>
-        <div class="logo-container">
-            <img src="{{ url_for('static', filename='logo_icon.svg') }}" alt="logo" />
-            <h4 class="logo">Morpheus<br>
-            </h4>
-        </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a class="nav-link" href="#">Portfolio</a></li>
-                <li><a class="nav-link" href="#">Anleitung</a></li>
-                <li><a class="nav-link" href="#">Kontakt</a></li>
-            </ul>
-        </nav>
-        <div class="github_icon">
-            <a href="https://github.com/amirpython/PROG2">
-                <img src="{{ url_for('static', filename='github.svg') }}" alt="github" />
-            </a>
-        </div>
-    </header>
-
-    <main>
-        <section class="titelseite">
-            <div class="container">
-                <div class="intro-text">
-                    <h5>Portfolio Gesamtwert</h5>
-                    <h1>${{ global_marketcap }}</h1>
-                    <p>24h Veränderung: ${{ global_marketcap }} </p>
-                </div>
-                <div class="button">
-                    <button class="button_filled">Alles anzeigen</button>
-                    <button class="button_border">Neuer Eintrag</button>
-                </div>
+{% extends "layout.html" %}
+{% block content %}
+    {% for position in positions %}
+        <article class="media">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ position.author }}</a>
+              <small class="text-muted">{{ position.date_posted }}</small>
             </div>
-        </section>
-        <section class="portfolio">
-            <div class="content_box">
-                <div class="content_portfolio">
-                    <h5>Portfolio Gesamtwert</h5>
-                    <h1>${{ global_marketcap }}</h1>
-                    <p>24h Veränderung: ${{ global_marketcap }} </p>
-                </div>
-                <div class="button">
-                    <button class="button_filled">Alles anzeigen</button>
-                    <button class="button_border">Neuer Eintrag</button>
-                </div>
-            </div>
-        </section>
-    </main>
-</body>
-
-</html>
+            <h2><a class="article-title" href="#">{{ position.coin }}</a></h2>
+            <p class="article-content">{{ position.amount }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
