@@ -6,7 +6,6 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-weight: 400;
-  min-height: 100vH;
 }
 
 h1 {
@@ -53,6 +52,10 @@ a:hover {
   color: #00AE99;
 }
 
+.navbar-nav .btn {
+  margin-left: 30px;
+}
+
 .content-section {
   max-width: 1200px;
   background: rgb(17, 26, 25);
@@ -97,12 +100,12 @@ a:hover {
 }
 
 
-/* Responsive (Mobile) */
-@media screen and (max-width: 992px) {
+/* Responsive (Tablet) */
+@media screen and (max-width: 1200px) {
   .content-section {
     padding: 20px 20px 20px 20px;
     border: none;
-    margin: 160px 20px 30px 20px;
+    margin: 90px 20px 30px 20px;
     }
 
   .navbar {
@@ -112,4 +115,13 @@ a:hover {
   .logo_img {
     height: 25px;
     }
-  }
+}
+
+
+  /* Responsive (Handy) */
+@media screen and (max-width: 768px) {
+  .navbar-nav .btn {
+    margin-left: 0px;
+    margin-top: 10px;
+    }
+}
