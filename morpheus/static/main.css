@@ -1,10 +1,12 @@
 body {
-  background: #000000;
+  background: rgb(0, 0, 0);
+  background-size: cover;
   color: #ffffff;
   margin-top: 5rem;
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-weight: 400;
+  min-height: 100vH;
 }
 
 h1 {
@@ -28,8 +30,10 @@ a:hover {
 }
 
 .logo_img {
+  margin-left: -20px;
   height: 30px;
   width: auto;
+  margin-right: 10px;
 }
 
 .logo_text {
@@ -50,11 +54,12 @@ a:hover {
 }
 
 .content-section {
+  max-width: 1200px;
   background: rgb(17, 26, 25);
-  padding: 50px 0px 50px 0px;
+  padding: 50px 50px 50px 50px;
   border: none;
-  margin: 110px auto 30px auto;
-  width: calc(100% - 60px);
+  margin: 140px auto 30px auto;
+  border-radius: 10px;
 }
 
 .account-img {
@@ -71,9 +76,6 @@ a:hover {
 /* Buttons */
 
 .btn {
-  margin: 0px;
-  height: 50px;
-  border-radius: 0px;
 }
 
 .btn-primary {
@@ -93,3 +95,21 @@ a:hover {
 .btn a{
   margin: auto 0px;
 }
+
+
+/* Responsive (Mobile) */
+@media screen and (max-width: 992px) {
+  .content-section {
+    padding: 20px 20px 20px 20px;
+    border: none;
+    margin: 160px 20px 30px 20px;
+    }
+
+  .navbar {
+    padding: 20px 20px 20px 20px;
+    }
+
+  .logo_img {
+    height: 25px;
+    }
+  }
