@@ -1,5 +1,5 @@
 from flask import render_template, url_for, flash, redirect
-from morpheus import app
+from morpheus import app, db, bcrypt
 from morpheus.forms import RegistrationForm, LoginForm
 from morpheus.models import User, Position
 
@@ -30,8 +30,15 @@ def index():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash(f'Der Account mit dem Nutzernamen {form.username.data} ist erstellt worden.', 'success')
-        return redirect(url_for('index'))
+    	# Den User zur Datenbank hinzufügen
+    	# Das Passwort verschlüsseln mit bcrypt
+    	hashed_password = bcrypt.generate_password_hash(form.password.data).decode("utf-8")
+    	user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+    	db.session.add(user)
+    	db.session.commit()
+    	# Meldung bei erfolgreichem Registrieren
+    	flash('Dein Account wurde erfolgreich erstellt. Du kannst Dich nun einloggen.', 'success')
+    	return redirect(url_for('login'))
     return render_template('register.html', title='Registrieren', form=form)
 
 
@@ -40,8 +47,10 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         if form.email.data == 'info@pazu.ch' and form.password.data == 'password':
+        	# Meldung bei erfolgreichem Login
             flash('Du bist nun eingeloggt.', 'success')
             return redirect(url_for('index'))
         else:
+        	# Meldung bei gescheitertem Registrieren
             flash('Ups! Etwas ist schiefgelaufen. Bitte überprüfe Deine E-Mail oder Dein Passwort.', 'danger')
     return render_template('login.html', title='Login', form=form)
