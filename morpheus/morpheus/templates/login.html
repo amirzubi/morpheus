@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
+<section class="container content-section-forms">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
+                <legend class="border-bottom mb-4">Anmelden</legend>
                 <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}
@@ -47,4 +48,5 @@
             Noch keinen Account? <a class="ml-2" href="{{ url_for('register') }}">Jetzt registrieren</a>
         </small>
     </div>
+</section>
 {% endblock content %}

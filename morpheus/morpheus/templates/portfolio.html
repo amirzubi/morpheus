@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for position in positions %}
+        <article class="media">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ position.author }}</a>
+              <small class="text-muted">{{ position.date_posted }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ position.coin }}</a></h2>
+            <p class="article-content">{{ position.amount }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

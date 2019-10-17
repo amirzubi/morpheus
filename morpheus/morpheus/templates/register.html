@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+<section class="container content-section-forms">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
@@ -67,4 +68,5 @@
             Du hast bereits einen Account? <a class="ml-2" href="{{ url_for('login') }}">Login</a>
         </small>
     </div>
+</section>
 {% endblock content %}
