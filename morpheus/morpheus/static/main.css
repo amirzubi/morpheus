@@ -70,6 +70,12 @@ a:hover {
   margin-left: 30px;
 }
 
+.account-img-small {
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
+}
+
 
 /* Main */
 
@@ -81,6 +87,16 @@ a:hover {
 .content a {
   text-decoration: none;
 }
+
+/* Index */
+
+
+.intro p{
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+/* Account page */
 
 .account-img {
   height: 125px;
@@ -116,7 +132,7 @@ footer {
 
 /* Formular */
 
-.section-forms {
+.section-form {
   max-width: 1200px;
   background: rgb(17, 26, 25);
   padding: 30px 30px 30px 30px;
@@ -124,7 +140,7 @@ footer {
   border-radius: 10px;
 }
 
-/* Second (Full-width Hintergrund mit Farbe) */
+/* Second (Full-width Hintergrund mit Farbe, Text zentriert) */
 
 .section-second {
   background-color: rgb(17, 26, 25);
@@ -157,13 +173,35 @@ footer {
 .section-third h2 {
   color: #ffffff;
   margin-bottom: 50px;
-  font-size: 22px;
+  font-size: 20px;
   }
 
 .section-third img {
   height: 100px;
   width: auto;
   padding: 20px;
+  }
+
+/* Fourth (Full-width Hintergrund mit Farbe, Text linksbündig) */
+
+.section-fourth {
+  background-color: rgb(17, 26, 25);
+  padding: 100px 30px 100px 30px;
+  }
+
+.section-fourth h2 {
+  color: #00AE99;
+  margin-bottom: 50px;
+  }
+
+.section-fourth p {
+  font-size: 27px;
+  color: #ffffff;
+  margin-bottom: 50px;
+  }
+
+.section-fourth a {
+  color: #00AE99;
   }
 
 /* 2 Spalten */
@@ -178,13 +216,13 @@ footer {
 }
 
 .section-spalten h2 {
-  font-size: 22px;
+  font-size: 20px;
   color: #00AE99;
   margin-bottom: 25px;
 }
 
 .section-spalten p {
-  font-size: 22px;
+  font-size: 20px;
   color: #ffffff;
   margin: 0;
   padding: 0;
@@ -215,8 +253,12 @@ footer {
 .btn {
 }
 
+.btn a{
+  margin: auto 0px;
+}
+
 .btn-primary {
-  border: none;
+  border: 1px solid #00AE99;
   border-radius: 0px;
   background: #00AE99;
   color: rgb(255, 255, 255);
@@ -225,7 +267,7 @@ footer {
 }
 
 .btn-primary:hover {
-  border: none;
+  border: 1px solid #04BEA8;
   border-radius: 0px;
   background: #04BEA8;
   font-size: 20px;
@@ -233,12 +275,29 @@ footer {
 
 .btn-primary:active {
   background: #04BEA8 !important;
-  border: none;
+  border: 1px solid #04BEA8;
   border-radius: 0px;
 }
 
-.btn a{
-  margin: auto 0px;
+.btn-outline-info {
+  border: 1px solid #00AE99;
+  border-radius: 0px;
+  font-size: 20px;
+  color: #00AE99;
+}
+
+.btn-outline-info:hover {
+  border: 1px solid #04BEA8;
+  border-radius: 0px;
+  font-size: 20px;
+  color: #ffffff;
+  background: #04BEA8;
+}
+
+.btn-outline-info:active {
+  background: #04BEA8 !important;
+  border: 1px solid #04BEA8;
+  border-radius: 0px;
 }
 
 
