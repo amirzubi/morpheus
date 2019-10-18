@@ -3,11 +3,16 @@ html {
     min-height: 100%;
 }
 
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
 body {
+  margin: 100px 0 0 0 !important;
   background: rgb(0, 0, 0);
   background-size: cover;
   color: #ffffff;
-  margin:0;
   padding:0;
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
@@ -27,6 +32,7 @@ p {
 a {
   font-size: 20px;
   color: rgb(153, 153, 153);
+  text-decoration: none;
 }
 
 a:hover {
@@ -35,7 +41,6 @@ a:hover {
 }
 
 /* Header */
-
 .logo_img {
   margin-left: -20px;
   height: 30px;
@@ -54,6 +59,7 @@ a:hover {
   background: #000000;
   margin: 0px;
   padding: 30px 30px 30px 30px;
+  height: 100px;
 }
 
 .site-header .navbar-nav .nav-link:active {
@@ -68,15 +74,12 @@ a:hover {
 /* Main */
 
 .content {
-  padding: 150px 30px 100px 30px;
+  padding: 50px 30px 50px 30px;
+  text-decoration: none;
 }
 
-.content-section-forms {
-  max-width: 1200px;
-  background: rgb(17, 26, 25);
-  padding: 30px 30px 30px 30px;
-  border: none;
-  border-radius: 10px;
+.content a {
+  text-decoration: none;
 }
 
 .account-img {
@@ -98,7 +101,114 @@ footer {
   background-color: rgb(24, 24, 24);
   color: rgb(255, 255, 255);
   padding: 40px 30px 30px;
+  margin: 50px 0 0 0;
 }
+
+/* Section Typen */
+
+/* Main */
+.section-main {
+    width: 100%;
+    margin: 50px auto auto auto;
+    height: 100vh;
+    align-items: center;
+}
+
+/* Formular */
+
+.section-forms {
+  max-width: 1200px;
+  background: rgb(17, 26, 25);
+  padding: 30px 30px 30px 30px;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Second (Full-width Hintergrund mit Farbe) */
+
+.section-second {
+  background-color: rgb(17, 26, 25);
+  padding: 100px 0 100px 0;
+  text-align: center;
+  }
+
+.section-second h2 {
+  color: #00AE99;
+  margin-bottom: 50px;
+  }
+
+.section-second p {
+  font-size: 27px;
+  color: #ffffff;
+  margin-bottom: 50px;
+  }
+
+.section-second a {
+  color: #00AE99;
+  }
+
+/* Third (Full-width Hintergrund ohne Farbe) */
+
+.section-third {
+  padding: 100px 0 100px 0;
+  text-align: center;
+  }
+
+.section-third h2 {
+  color: #ffffff;
+  margin-bottom: 50px;
+  font-size: 22px;
+  }
+
+.section-third img {
+  height: 100px;
+  width: auto;
+  padding: 20px;
+  }
+
+/* 2 Spalten */
+
+.section-spalten {
+}
+
+.section-spalten img {
+  height: 150px;
+  width: auto;
+  margin-bottom: 25px;
+}
+
+.section-spalten h2 {
+  font-size: 22px;
+  color: #00AE99;
+  margin-bottom: 25px;
+}
+
+.section-spalten p {
+  font-size: 22px;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+.spalte-left{
+  background-color: #003831;
+  padding: 70px 30px 70px 30px;
+  text-align: center;
+}
+
+.spalte-left:hover{
+  background-color: #002D28;
+}
+
+.spalte-right{
+  background-color: #003831;
+  padding: 70px 30px 70px 30px;
+  text-align: center;
+}
+
+.spalte-right:hover{
+  background-color: #002D28;
+}
+
 
 /* Buttons */
 
@@ -107,6 +217,7 @@ footer {
 
 .btn-primary {
   border: none;
+  border-radius: 0px;
   background: #00AE99;
   color: rgb(255, 255, 255);
   font-size: 20px;
@@ -115,8 +226,15 @@ footer {
 
 .btn-primary:hover {
   border: none;
+  border-radius: 0px;
   background: #04BEA8;
   font-size: 20px;
+}
+
+.btn-primary:active {
+  background: #04BEA8 !important;
+  border: none;
+  border-radius: 0px;
 }
 
 .btn a{
@@ -147,5 +265,9 @@ footer {
   .navbar-nav .btn {
     margin-left: 0px;
     margin-top: 10px;
+    }
+
+  .spalte-right{
+    margin-top:30px;
     }
 }

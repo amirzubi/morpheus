@@ -1,3 +1,60 @@
 {% extends "layout.html" %}
 {% block content %}
-{% endblock content %}
+
+<!-- Titelseite -->
+<section class="section-main container">
+  <div class="container">
+        <div class="intro-text">
+            <h1>Free.</h1>
+            <h1>Fast.</h1>
+            <h1>Secure.</h1>
+            <p>Welcome to Morpheus.</p>
+        </div>
+        <div class="button">
+            <a href="#product_infos"><button class="btn btn-primary">Mehr erfahren</button></a>
+            <a href="{{ url_for('register') }}"><button class="btn btn-primary">Registrieren</button></a>
+        </div>
+  </div>
+
+<!-- Produkt Infos -->
+</section><section id="product_infos" class="section-second">
+  <div class="container">
+    <h2>Bereit für ein einzigartiges Portfolio-Erlebnis?</h2>
+    <p>Morpheus ist ein kostenloses, schnelles und sicheres Web-Portfolio, welches Dir eine detailierte Übersicht über Deine Kryptowährungen verschafft.</p>
+    <a href="{{ url_for('register') }}">Jetzt loslegen →</a>
+  </div>
+</section>
+
+<!-- Technologien -->
+<section id="technology" class="section-third">
+  <div class="container">
+    <h2>Die Technologien hinter Morpheus</h2>
+<img src="{{ url_for('static', filename='python.svg') }}" alt="Python"/>
+<img src="{{ url_for('static', filename='flask.svg') }}" alt="Flask"/>
+<img src="{{ url_for('static', filename='html.svg') }}" alt="HTML 5"/>
+<img src="{{ url_for('static', filename='css.svg') }}" alt="CSS 3"/>
+<img src="{{ url_for('static', filename='bootstrap.svg') }}" alt="Bootstrap"/>
+  </div>
+</section>
+
+<!-- Github und Kontakt -->
+<section class="section-spalten">
+  <div class="row">
+  <div class="col-md-6">
+    <a href="https://github.com/amirpython/PROG2" target="_blank">
+      <div class="spalte-left">
+        <img src="{{ url_for('static', filename='github.svg') }}" alt="Github Icon"/>
+        <h2>Open Source</h2>
+        <p>Repository öffnen →</p></div>
+      </div>
+    </a>
+  <div class="col-md-6">
+    <a href="mailto:info@pazu.ch">
+      <div class="spalte-right">
+        <img src="{{ url_for('static', filename='contact.svg') }}" alt="Kontakt Icon"/>
+        <h2>Kontakt</h2>
+        <p>Jetzt kontaktieren →</p></div>
+      </div>
+    </a>
+
+{% endblock %}
