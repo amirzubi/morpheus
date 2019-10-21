@@ -37,7 +37,7 @@
               <!-- Menü für angemeldete User -->
               {% if current_user.is_authenticated %}
               <a class="nav-item nav-link" href="{{ url_for('portfolio') }}">Portfolio</a>
-              <a class="nav-item nav-link" href="{{ url_for('new_position') }}">Neue Position</a>
+              <a class="nav-item nav-link" href="{{ url_for('new_position') }}">Position hinzufügen</a>
               <!-- Menü für abgemeldete User -->
               {% else %}
               {% endif %}

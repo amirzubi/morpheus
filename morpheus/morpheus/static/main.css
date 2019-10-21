@@ -343,6 +343,23 @@ margin: 0 -15px -15px -15px;
   border-radius: 0px;
 }
 
+/* Modal */
+
+.modal-content {
+  background: rgb(17, 26, 25);
+  padding: 30px 30px 30px 30px;
+  border: none;
+  border-radius: 10px;
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-footer {
+  border: none;
+}
+
 
 /* Responsive (Tablet) */
 @media screen and (max-width: 1200px) {

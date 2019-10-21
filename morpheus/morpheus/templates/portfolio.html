@@ -2,6 +2,7 @@
 {% block content %}
 <h1>Positionen</h1>
     {% for position in positions %}
+    {% if position.author == current_user %}
     <section class="portfolio-single-positions">
 	  		<div class="spalten col-12 col-sm-4 col-md-3">
 	  			<div class="spalte">
@@ -26,5 +27,6 @@
 		  </div>
 		 </div>
 		 </section>
+		 {% endif %}
     {% endfor %}
 {% endblock content %}

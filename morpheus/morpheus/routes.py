@@ -80,7 +80,19 @@ def portfolio():
 	value = Position.amount * price
 	return render_template("portfolio.html", title="Portfolio", positions=positions, price=price, value=value)
 
-##### Neue Position
+
+##### Position
+@app.route("/position/<int:position_id>")
+# Falls der User nicht angemeldet ist, wird er zu "Anmelden" weitergeleitet
+@login_required
+def position(position_id):
+	position = Position.query.get_or_404(position_id)
+	if position.author != current_user:
+		abort(403)
+	return render_template("position.html", title=position.name, position=position)
+
+
+##### Position hinzufügen
 @app.route("/position/new", methods=["GET", "POST"])
 # Falls der User nicht angemeldet ist, wird er zu "Anmelden" weitergeleitet
 @login_required
@@ -93,7 +105,7 @@ def new_position():
 		# Meldung bei erfolgreichem Erstellen
 		flash('Die neue Position wurde erfolgreich hinzugefügt.', 'success')
 		return redirect(url_for('index'))
-	return render_template('new_position.html', title='Neue Position', form=form, legend="Neue Position")
+	return render_template('new_position.html', title='Position hinzufügen', form=form, legend="Position hinzufügen")
 
 ##### Position bearbeiten
 @app.route("/position/<int:position_id>/edit", methods=["GET", "POST"])
@@ -115,13 +127,20 @@ def edit_position(position_id):
 		form.amount.data = position.amount
 	return render_template("new_position.html", title='Position bearbeiten', form=form, legend="Position bearbeiten")
 
-##### Position
-@app.route("/position/<int:position_id>")
+
+##### Position löschen
+@app.route("/position/<int:position_id>/delete", methods=["POST"])
 # Falls der User nicht angemeldet ist, wird er zu "Anmelden" weitergeleitet
 @login_required
-def position(position_id):
+def delete_position(position_id):
 	position = Position.query.get_or_404(position_id)
-	return render_template("position.html", title=position.name, position=position)
+	if position.author != current_user:
+		abort(403)
+	db.session.delete(position)
+	db.session.commit()
+	flash("Die Position wurde erfolgreich gelöscht.", "success")
+	return redirect(url_for("index"))
+
 
 ##### Registrieren
 @app.route("/register", methods=["GET", "POST"])
