@@ -247,6 +247,49 @@ footer {
   background-color: #002D28;
 }
 
+/* 4 Spalten */
+.portfolio-single-positions {
+margin: 0 -15px -15px -15px;
+}
+
+.spalten {
+  float: left;
+}
+
+.spalte{
+  background-color: #003831;
+  padding: 70px 30px 70px 30px;
+  margin: 15px 0;
+}
+
+.spalte:hover{
+  background-color: #002D28;
+}
+
+.spalte h2{
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.spalte p{
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.small-title {
+  text-transform: uppercase;
+  font-size: 15px !important;
+}
+
+.td-title {
+  width: 30%;
+}
+
+.td-data {
+  width: 70%;
+  text-align: right;
+}
+
 
 /* Buttons */
 

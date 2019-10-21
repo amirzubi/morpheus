@@ -1,28 +1,65 @@
 import os
 import secrets
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, abort
 from morpheus import app, db, bcrypt
-from morpheus.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from morpheus.forms import RegistrationForm, LoginForm, UpdateAccountForm, PositionForm
 from morpheus.models import User, Position
+from morpheus.api import *
 from flask_login import login_user, current_user, logout_user, login_required
 
+import requests
+import json
 
+"""
 positions = [
     {
         "author": "Pascal",
         "coin": "Bitcoin",
+        "symbol" : "BTC",
         "amount": 1.5,
         "date_posted": "20. Oktober 2019"
     },
     {
         "author": "Pascal",
         "coin": "Ethereum",
+        "symbol" : "ETH",
         "amount": 5.5,
         "date_posted": "21. Oktober 2019"
+    },
+    {
+        "author": "Pascal",
+        "coin": "Ripple",
+        "symbol" : "XRP",
+        "amount": 1200,
+        "date_posted": "22. Oktober 2019"
+    },
+    {
+        "author": "Pascal",
+        "coin": "Tron",
+        "symbol" : "TRX",
+        "amount": 30000,
+        "date_posted": "24. Oktober 2019"
+    },
+    {
+        "author": "Pascal",
+        "coin": "IOTA",
+      	"symbol" : "IOTA",
+        "amount": 1300,
+        "date_posted": "24. Oktober 2019"
+    },
+    {
+        "author": "Pascal",
+        "coin": "iExec",
+        "symbol" : "RLC",
+        "amount": 56,
+        "date_posted": "24. Oktober 2019"
     }
 ]
 
+amount = positions[0]['amount']
+value = float(price) * float(amount)
+"""
 
 ##### Index
 @app.route("/")
@@ -33,13 +70,58 @@ def index():
 		return redirect(url_for("portfolio"))
 	return render_template("index.html")
 
+
 ##### Portfolio
 @app.route("/portfolio", methods=["GET", "POST"])
 # Falls der User nicht angemeldet ist, wird er zu "Anmelden" weitergeleitet
 @login_required
 def portfolio():
-	return render_template("portfolio.html", title="Portfolio", positions=positions)
+	positions = Position.query.all()
+	value = Position.amount * price
+	return render_template("portfolio.html", title="Portfolio", positions=positions, price=price, value=value)
 
+##### Neue Position
+@app.route("/position/new", methods=["GET", "POST"])
+# Falls der User nicht angemeldet ist, wird er zu "Anmelden" weitergeleitet
+@login_required
+def new_position():
+	form = PositionForm()
+	if form.validate_on_submit():
+		position = Position(name=form.name.data, amount=form.amount.data, author=current_user)
+		db.session.add(position)
+		db.session.commit()
+		# Meldung bei erfolgreichem Erstellen
+		flash('Die neue Position wurde erfolgreich hinzugefügt.', 'success')
+		return redirect(url_for('index'))
+	return render_template('new_position.html', title='Neue Position', form=form, legend="Neue Position")
+
+##### Position bearbeiten
+@app.route("/position/<int:position_id>/edit", methods=["GET", "POST"])
+# Falls der User nicht angemeldet ist, wird er zu "Anmelden" weitergeleitet
+@login_required
+def edit_position(position_id):
+	position = Position.query.get_or_404(position_id)
+	if position.author != current_user:
+		abort(403)
+	form = PositionForm()
+	if form.validate_on_submit():
+		position.name = form.name.data
+		position.amount = form.amount.data
+		db.session.commit()
+		flash("Die Position wurde erfolgreich aktualisiert.", "success")
+		return redirect(url_for("position", position_id=position.id))
+	elif request.method == "GET":
+		form.name.data = position.name
+		form.amount.data = position.amount
+	return render_template("new_position.html", title='Position bearbeiten', form=form, legend="Position bearbeiten")
+
+##### Position
+@app.route("/position/<int:position_id>")
+# Falls der User nicht angemeldet ist, wird er zu "Anmelden" weitergeleitet
+@login_required
+def position(position_id):
+	position = Position.query.get_or_404(position_id)
+	return render_template("position.html", title=position.name, position=position)
 
 ##### Registrieren
 @app.route("/register", methods=["GET", "POST"])

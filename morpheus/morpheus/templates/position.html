@@ -1,12 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1>Positionen</h1>
-    {% for position in positions %}
     <section class="portfolio-single-positions">
-	  		<div class="spalten col-12 col-sm-4 col-md-3">
+	  		<div class="spalten col-12">
 	  			<div class="spalte">
 		      <article>
-		         	<a href="{{ url_for('position', position_id=position.id) }}"><h2>{{ position.name }}</h2></a>
+		         	<h2>{{ position.name }}</h2>
 		         	<table>
 		         		<tr>
 		         			<td class="td-title">Menge</td>
@@ -26,5 +24,4 @@
 		  </div>
 		 </div>
 		 </section>
-    {% endfor %}
 {% endblock content %}
