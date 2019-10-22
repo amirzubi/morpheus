@@ -1,25 +1,33 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1>Positionen</h1>
+<h1>Hallo {{ current_user.username }}.</h1>
+<h2>Positionen ({{ positions_total }})</h2>
     {% for position in positions %}
-    {% if position.author == current_user %}
     <section class="portfolio-single-positions">
-	  		<div class="spalten col-12 col-sm-4 col-md-3">
+	  		<div class="spalten col-12 col-sm-4 col-md-4">
 	  			<div class="spalte">
 		      <article>
-		         	<a href="{{ url_for('position', position_id=position.id) }}"><h2>{{ position.name }}</h2></a>
+		         	<a href="{{ url_for('position', position_id=position.id) }}"><h5>{{ position.name }}</h5></a>
 		         	<table>
 		         		<tr>
-		         			<td class="td-title">Menge</td>
-		         			<td class="td-data">{{ position.amount }} {{ position.symbol }}</td>
+		         			<td class="td-title"><h2>{{ position.amount }} {{ symbol }}</h2></td>
+		         			<td class="td-data">~ {{ value }}</td>
 		         		</tr>
-		         		<tr>
-				            <td class="td-title">Wert</td>
-				            <td class="td-data">{{ value }} USD</td>
-		        		</tr>
 		        		<tr>
 				            <td class="td-title">Preis</td>
-				            <td class="td-data">{{ price }} USD</td>
+				            <td class="td-data">{{ price }}</td>
+		        		</tr>
+						<tr>
+				            <td class="td-title">1h Änderung</td>
+				            <td class="td-data">{{ percent_change_1h }}%</td>
+		        		</tr>
+		        		<tr>
+				            <td class="td-title">24h Änderung</td>
+				            <td class="td-data">{{ percent_change_24h }}%</td>
+		        		</tr>
+		        		<tr>
+				            <td class="td-title">7d Änderung</td>
+				            <td class="td-data">{{ percent_change_7d }}%</td>
 		        		</tr>
 		     	</table>
 		     	<small class="text-muted">Zuletzt aktualisiert: {{ position.date_posted.strftime("%d-%m-%Y") }}</small>
@@ -27,6 +35,5 @@
 		  </div>
 		 </div>
 		 </section>
-		 {% endif %}
     {% endfor %}
 {% endblock content %}

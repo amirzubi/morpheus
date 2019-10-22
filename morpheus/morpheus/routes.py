@@ -1,5 +1,3 @@
-import os
-import secrets
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
 from morpheus import app, db, bcrypt
@@ -7,59 +5,13 @@ from morpheus.forms import RegistrationForm, LoginForm, UpdateAccountForm, Posit
 from morpheus.models import User, Position
 from morpheus.api import *
 from flask_login import login_user, current_user, logout_user, login_required
-
+import os
 import requests
 import json
+import secrets
 
-"""
-positions = [
-    {
-        "author": "Pascal",
-        "coin": "Bitcoin",
-        "symbol" : "BTC",
-        "amount": 1.5,
-        "date_posted": "20. Oktober 2019"
-    },
-    {
-        "author": "Pascal",
-        "coin": "Ethereum",
-        "symbol" : "ETH",
-        "amount": 5.5,
-        "date_posted": "21. Oktober 2019"
-    },
-    {
-        "author": "Pascal",
-        "coin": "Ripple",
-        "symbol" : "XRP",
-        "amount": 1200,
-        "date_posted": "22. Oktober 2019"
-    },
-    {
-        "author": "Pascal",
-        "coin": "Tron",
-        "symbol" : "TRX",
-        "amount": 30000,
-        "date_posted": "24. Oktober 2019"
-    },
-    {
-        "author": "Pascal",
-        "coin": "IOTA",
-      	"symbol" : "IOTA",
-        "amount": 1300,
-        "date_posted": "24. Oktober 2019"
-    },
-    {
-        "author": "Pascal",
-        "coin": "iExec",
-        "symbol" : "RLC",
-        "amount": 56,
-        "date_posted": "24. Oktober 2019"
-    }
-]
+os.system("cls") # Konsolenanzeige leeren
 
-amount = positions[0]['amount']
-value = float(price) * float(amount)
-"""
 
 ##### Index
 @app.route("/")
@@ -76,9 +28,20 @@ def index():
 # Falls der User nicht angemeldet ist, wird er zu "Anmelden" weitergeleitet
 @login_required
 def portfolio():
-	positions = Position.query.all()
-	value = Position.amount * price
-	return render_template("portfolio.html", title="Portfolio", positions=positions, price=price, value=value)
+	# Erfasste Positionen des akutellen Benutzers anzeigen \ Nach dem Wert sortieren \ Alle anzeigen
+	positions = Position.query.filter_by(author=current_user)\
+		.order_by(Position.amount.desc()) \
+		.all()
+	positions_total = len(positions)
+	return render_template("portfolio.html", title="Portfolio", 
+		positions=positions, 
+		positions_total=positions_total, 
+		price=price,
+		value=value,
+		symbol=symbol,
+		percent_change_1h=percent_change_1h,
+		percent_change_24h=percent_change_24h,
+		percent_change_7d=percent_change_7d)
 
 
 ##### Position

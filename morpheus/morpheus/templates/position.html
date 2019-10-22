@@ -2,7 +2,7 @@
 {% block content %}
     {% if position.author == current_user %}
     <section class="portfolio-single-positions">
-	  		<div class="spalten col-12">
+	  		<div class="spalten col-6">
 	  			<div class="spalte">
 		      <article>
 		         	<h2>{{ position.name }}</h2>
@@ -13,11 +13,11 @@
 		         		</tr>
 		         		<tr>
 				            <td class="td-title">Wert</td>
-				            <td class="td-data">{{ value }} USD</td>
+				            <td class="td-data">{{ position.amount }} USD</td>
 		        		</tr>
 		        		<tr>
 				            <td class="td-title">Preis</td>
-				            <td class="td-data">{{ price }} USD</td>
+				            <td class="td-data">{{ position.amount }} USD</td>
 		        		</tr>
 		     	</table>
 		     	<small class="text-muted">Zuletzt aktualisiert: {{ position.date_posted.strftime("%d-%m-%Y") }}</small>
@@ -37,7 +37,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Position löschen?</h5>
+          <h5 class="modal-title" id="deleteModalLabel">Position wirklich löschen?</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

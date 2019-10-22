@@ -267,7 +267,7 @@ margin: 0 -15px -15px -15px;
 }
 
 .spalte h2{
-  font-size: 30px;
+  font-size: 40px;
   color: #ffffff;
 }
 
@@ -281,12 +281,24 @@ margin: 0 -15px -15px -15px;
   font-size: 15px !important;
 }
 
+
+.first_table {
+  padding-bottom: 50px;
+}
+table, tr {
+width: 100%;
+}
+
 .td-title {
-  width: 30%;
+  width: 60%;
 }
 
 .td-data {
-  width: 70%;
+  width: 40%;
+  text-align: right;
+}
+
+.td-data span{
   text-align: right;
 }
 
