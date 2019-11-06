@@ -5,19 +5,28 @@
 	  		<div class="spalten col-6">
 	  			<div class="spalte">
 		      <article>
-		         	<h2>{{ position.name }}</h2>
+			         	<a href="{{ url_for('position', position_id=position.id) }}"><h5>{{ position.name }}</h5></a>
+		         	<a href="{{ url_for('position', position_id=position.id) }}"><h2>{{ position.amount }} {{ symbol }}</h2></a>
 		         	<table>
 		         		<tr>
-		         			<td class="td-title">Menge</td>
-		         			<td class="td-data">{{ position.amount }} {{ position.symbol }}</td>
-		         		</tr>
-		         		<tr>
-				            <td class="td-title">Wert</td>
-				            <td class="td-data">{{ position.amount }} USD</td>
+				            <td class="td-title text-white">Wert</td>
+				            <td class="td-data text-white">{{ value }}</td>
 		        		</tr>
 		        		<tr>
 				            <td class="td-title">Preis</td>
-				            <td class="td-data">{{ position.amount }} USD</td>
+				            <td class="td-data">{{ price }}</td>
+		        		</tr>
+						<tr>
+				            <td class="td-title">1h Änderung</td>
+				            <td class="td-data">{{ percent_change_1h }}%</td>
+		        		</tr>
+		        		<tr>
+				            <td class="td-title">24h Änderung</td>
+				            <td class="td-data">{{ percent_change_24h }}%</td>
+		        		</tr>
+		        		<tr>
+				            <td class="td-title">7d Änderung</td>
+				            <td class="td-data">{{ percent_change_7d }}%</td>
 		        		</tr>
 		     	</table>
 		     	<small class="text-muted">Zuletzt aktualisiert: {{ position.date_posted.strftime("%d-%m-%Y") }}</small>

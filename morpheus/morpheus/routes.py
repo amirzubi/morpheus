@@ -10,7 +10,6 @@ import requests
 import json
 import secrets
 
-os.system("cls") # Konsolenanzeige leeren
 
 
 ##### Index

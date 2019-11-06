@@ -260,6 +260,7 @@ margin: 0 -15px -15px -15px;
   background-color: #003831;
   padding: 70px 30px 70px 30px;
   margin: 15px 0;
+  color: rgb(153, 153, 153);
 }
 
 .spalte:hover{
@@ -269,6 +270,7 @@ margin: 0 -15px -15px -15px;
 .spalte h2{
   font-size: 40px;
   color: #ffffff;
+  margin-bottom: 20px;
 }
 
 .spalte p{

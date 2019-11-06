@@ -1,5 +1,5 @@
 from flask import request, url_for
-from morpheus.forms import PositionForm
+from morpheus.forms import *
 from morpheus.models import Position
 import requests
 import json
@@ -15,9 +15,11 @@ tickerURL = "https://api.coinmarketcap.com/v1/ticker/"
 api_request = requests.get(tickerURL)
 api = json.loads(api_request.content)
 
-for x in api:
-	for position in positions:
+
+for position in positions:
+	for x in api:
 		if (position.name).lower() == x["id"]:
+			print(position.name)
 			id = x["id"]
 			symbol = x["symbol"]
 			price = float(x["price_usd"])
@@ -26,3 +28,4 @@ for x in api:
 			percent_change_7d = x["percent_change_7d"]
 			value = ("${0:.2f}".format(float(position.amount * price)))
 			price = ("${0:.7f}".format(float(x["price_usd"])))
+			print (price)

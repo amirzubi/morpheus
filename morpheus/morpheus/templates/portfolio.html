@@ -8,26 +8,19 @@
 	  			<div class="spalte">
 		      <article>
 		         	<a href="{{ url_for('position', position_id=position.id) }}"><h5>{{ position.name }}</h5></a>
+		         	<a href="{{ url_for('position', position_id=position.id) }}"><h2>{{ position.amount }} {{ symbol }}</h2></a>
 		         	<table>
 		         		<tr>
-		         			<td class="td-title"><h2>{{ position.amount }} {{ symbol }}</h2></td>
-		         			<td class="td-data">~ {{ value }}</td>
-		         		</tr>
+				            <td class="td-title text-white">Wert</td>
+				            <td class="td-data text-white">{{ position.value }}</td>
+		        		</tr>
 		        		<tr>
 				            <td class="td-title">Preis</td>
-				            <td class="td-data">{{ price }}</td>
-		        		</tr>
-						<tr>
-				            <td class="td-title">1h Änderung</td>
-				            <td class="td-data">{{ percent_change_1h }}%</td>
+				            <td class="td-data">{{ position.price }}</td>
 		        		</tr>
 		        		<tr>
 				            <td class="td-title">24h Änderung</td>
 				            <td class="td-data">{{ percent_change_24h }}%</td>
-		        		</tr>
-		        		<tr>
-				            <td class="td-title">7d Änderung</td>
-				            <td class="td-data">{{ percent_change_7d }}%</td>
 		        		</tr>
 		     	</table>
 		     	<small class="text-muted">Zuletzt aktualisiert: {{ position.date_posted.strftime("%d-%m-%Y") }}</small>
