@@ -16,10 +16,9 @@ api_request = requests.get(tickerURL)
 api = json.loads(api_request.content)
 
 
-for position in positions:
-	for x in api:
+for x in api:
+	for position in positions:
 		if (position.name).lower() == x["id"]:
-			print(position.name)
 			id = x["id"]
 			symbol = x["symbol"]
 			price = float(x["price_usd"])
