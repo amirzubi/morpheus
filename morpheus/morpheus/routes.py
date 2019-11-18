@@ -1,5 +1,5 @@
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request, abort
+from flask import render_template, url_for, flash, redirect, request, abort, jsonify
 from morpheus import app, db, bcrypt
 from morpheus.forms import RegistrationForm, LoginForm, UpdateAccountForm, PositionForm
 from morpheus.models import User, Position
@@ -9,9 +9,6 @@ import os
 import requests
 import json
 import secrets
-
-os.system("cls") # Konsolenanzeige leeren
-
 
 ##### Index
 @app.route("/")
@@ -33,11 +30,43 @@ def portfolio():
 		.order_by(Position.amount.desc()) \
 		.all()
 	positions_total = len(positions)
+
+# Ziel ist es, die jeweiligen Daten in der Schlaufe in einem DICT oder JSON zu speichern und dann im HTML für jede Position auszugeben.
+	"""
+	# Neuer Code von mir, funktioniert aber leider nicht
+	for position in positions:
+		for x in api:
+			if (position.name).lower() == x["id"]:
+				blocks = {
+					id_ : x["id"],
+					symbol : x["symbol"],
+					price : float(x["price_usd"]),
+					percent_change_1h : x["percent_change_1h"],
+					percent_change_24h : x["percent_change_24h"],
+					percent_change_7d : x["percent_change_7d"],
+					value : ("${0:.2f}".format(float(position.amount * price))),
+					price : ("${0:.7f}".format(float(x["price_usd"])))
+				}
+	"""
+	
+	# Alter Code von mir (Funktioniert, nimmt für die Anzeige der Daten im HTML aber nur immer die letzte Kryptowährung in der IF-Schlaufe, da der Wert überschrieben wird)
+	for position in positions:
+		for x in api:
+			if (position.name).lower() == x["id"]:
+				id = x["id"]
+				symbol = x["symbol"]
+				price = float(x["price_usd"])
+				percent_change_1h = x["percent_change_1h"]
+				percent_change_24h = x["percent_change_24h"]
+				percent_change_7d = x["percent_change_7d"]
+				value = ("${0:.2f}".format(float(position.amount * price)))
+				price = ("${0:.7f}".format(float(x["price_usd"])))
+	
 	return render_template("portfolio.html", title="Portfolio", 
 		positions=positions, 
-		positions_total=positions_total, 
+		positions_total=positions_total,
+		value = value,
 		price=price,
-		value=value,
 		symbol=symbol,
 		percent_change_1h=percent_change_1h,
 		percent_change_24h=percent_change_24h,
