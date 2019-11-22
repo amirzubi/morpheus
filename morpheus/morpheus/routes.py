@@ -32,12 +32,12 @@ def portfolio():
 	positions_total = len(positions)
 
 # Ziel ist es, die jeweiligen Daten in der Schlaufe in einem DICT oder JSON zu speichern und dann im HTML für jede Position auszugeben.
-	"""
-	# Neuer Code von mir, funktioniert aber leider nicht
+	# Neuer Code
+	blocks = []
 	for position in positions:
 		for x in api:
 			if (position.name).lower() == x["id"]:
-				blocks = {
+				block = {
 					id_ : x["id"],
 					symbol : x["symbol"],
 					price : float(x["price_usd"]),
@@ -47,8 +47,24 @@ def portfolio():
 					value : ("${0:.2f}".format(float(position.amount * price))),
 					price : ("${0:.7f}".format(float(x["price_usd"])))
 				}
+				blocks.append(block)
+		return
+
+	return render_template("portfolio.html", title="Portfolio", 
+		blocks=blocks,
+		block=block,
+		positions=positions, 
+		positions_total=positions_total,
+		id_=id_,
+		symbol=symbol,
+		price=price,
+		percent_change_1h=percent_change_1h,
+		percent_change_24h=percent_change_24h,
+		percent_change_7d=percent_change_7d,
+		value=value)
+
+
 	"""
-	
 	# Alter Code von mir (Funktioniert, nimmt für die Anzeige der Daten im HTML aber nur immer die letzte Kryptowährung in der IF-Schlaufe, da der Wert überschrieben wird)
 	for position in positions:
 		for x in api:
@@ -71,7 +87,7 @@ def portfolio():
 		percent_change_1h=percent_change_1h,
 		percent_change_24h=percent_change_24h,
 		percent_change_7d=percent_change_7d)
-
+	"""
 
 ##### Position
 @app.route("/position/<int:position_id>")

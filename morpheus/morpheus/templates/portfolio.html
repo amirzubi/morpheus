@@ -2,25 +2,28 @@
 {% block content %}
 <h1>Hallo {{ current_user.username }}.</h1>
 <h2>Positionen ({{ positions_total }})</h2>
-    {% for position in positions %}
+<!-- Alter Code 
+    {% for position in positions %} 
+-->
+	{% for block in blocks %}
     <section class="portfolio-single-positions">
 	  		<div class="spalten col-12 col-sm-4 col-md-4">
 	  			<div class="spalte">
 		      <article>
-		         	<a href="{{ url_for('position', position_id=position.id) }}"><h5>{{ position.name }}</h5></a>
+		         	<a href="{{ url_for('position', position_id=position.id) }}"><h5>{{ block["id_"] }}</h5></a>
 		         	<a href="{{ url_for('position', position_id=position.id) }}"><h2>{{ position.amount }} {{ symbol }}</h2></a>
 		         	<table>
 		         		<tr>
 				            <td class="td-title text-white">Wert</td>
-				            <td class="td-data text-white">{{ value }}</td>
+				            <td class="td-data text-white">{{ block["value"] }}</td>
 		        		</tr>
 		        		<tr>
 				            <td class="td-title">Preis</td>
-				            <td class="td-data">{{ price }}</td>
+				            <td class="td-data">{{ block["price"] }}</td>
 		        		</tr>
 		        		<tr>
 				            <td class="td-title">24h Änderung</td>
-				            <td class="td-data">{{ percent_change_24h }}%</td>
+				            <td class="td-data">{{ block["percent_change_24h"] }}%</td>
 		        		</tr>
 		     	</table>
 		     	<small class="text-muted">Zuletzt aktualisiert: {{ position.date_posted.strftime("%d-%m-%Y") }}</small>

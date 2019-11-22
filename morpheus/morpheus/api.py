@@ -16,14 +16,14 @@ api_request = requests.get(tickerURL)
 api = json.loads(api_request.content)
 
 # Daten als neue Variable definieren
-for x in api:
+"""for x in api:
 		id_ = x["id"]
 		price = ("${0:.7f}".format(float(x["price_usd"])))
 		symbol = x["symbol"]
 		percent_change_1h = x["percent_change_1h"]
 		percent_change_24h = x["percent_change_24h"]
 		percent_change_7d = x["percent_change_7d"]
-
+"""
 
 """
 Code von Fabian Odoni (Unterricht 08.11.2019)
