@@ -2,16 +2,13 @@
 {% block content %}
 <h1>Hallo {{ current_user.username }}.</h1>
 <h2>Positionen ({{ positions_total }})</h2>
-<!-- Alter Code 
-    {% for position in positions %} 
--->
 	{% for block in blocks %}
     <section class="portfolio-single-positions">
 	  		<div class="spalten col-12 col-sm-4 col-md-4">
 	  			<div class="spalte">
 		      <article>
-		         	<a href="{{ url_for('position', position_id=position.id) }}"><h5>{{ block["id_"] }}</h5></a>
-		         	<a href="{{ url_for('position', position_id=position.id) }}"><h2>{{ position.amount }} {{ symbol }}</h2></a>
+		         	<a href="{{ url_for('position', position_id=block["position_id"]) }}"><h5>{{ block["name"] }}</h5></a>
+		         	<a href="{{ url_for('position', position_id=block["position_id"]) }}"><h2>{{ block["amount"] }} {{ block["symbol"] }}</h2></a>
 		         	<table>
 		         		<tr>
 				            <td class="td-title text-white">Wert</td>
@@ -26,7 +23,7 @@
 				            <td class="td-data">{{ block["percent_change_24h"] }}%</td>
 		        		</tr>
 		     	</table>
-		     	<small class="text-muted">Zuletzt aktualisiert: {{ position.date_posted.strftime("%d-%m-%Y") }}</small>
+		     	<small class="text-muted">Zuletzt aktualisiert: {{ block["position_date_posted"] }}</small>
 		      </article>
 		  </div>
 		 </div>

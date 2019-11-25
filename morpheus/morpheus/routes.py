@@ -38,30 +38,24 @@ def portfolio():
 		for x in api:
 			if (position.name).lower() == x["id"]:
 				block = {
-					id_ : x["id"],
-					symbol : x["symbol"],
-					price : float(x["price_usd"]),
-					percent_change_1h : x["percent_change_1h"],
-					percent_change_24h : x["percent_change_24h"],
-					percent_change_7d : x["percent_change_7d"],
-					value : ("${0:.2f}".format(float(position.amount * price))),
-					price : ("${0:.7f}".format(float(x["price_usd"])))
+					"id_" : x["id"],
+					"amount" : position.amount,
+					"name" : x["name"],
+					"symbol" : x["symbol"],
+					"price" : float(x["price_usd"]),
+					"percent_change_1h" : x["percent_change_1h"],
+					"percent_change_24h" : x["percent_change_24h"],
+					"percent_change_7d" : x["percent_change_7d"],
+					"value" : ("${0:.2f}".format(float(position.amount * float(x["price_usd"])))),
+					"price" : ("${0:.7f}".format(float(x["price_usd"]))),
+					"position_date_posted" : position.date_posted.strftime("%d-%m-%Y"),
+					"position_id" : position.id
 				}
 				blocks.append(block)
-		return
 
 	return render_template("portfolio.html", title="Portfolio", 
 		blocks=blocks,
-		block=block,
-		positions=positions, 
-		positions_total=positions_total,
-		id_=id_,
-		symbol=symbol,
-		price=price,
-		percent_change_1h=percent_change_1h,
-		percent_change_24h=percent_change_24h,
-		percent_change_7d=percent_change_7d,
-		value=value)
+		positions_total=positions_total)
 
 
 	"""
