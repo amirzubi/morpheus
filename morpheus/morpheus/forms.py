@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from morpheus.models import User
 from morpheus.api import *
@@ -10,7 +10,8 @@ from morpheus.routes import *
 
 ##### Neue Position hinzufügen
 class PositionForm(FlaskForm):
-    name = StringField("Coin", validators=[DataRequired()])
+    # name = StringField("Coin", validators=[DataRequired()])
+    name = SelectField("Coin", choices=[(x["id"], x["name"]) for x in api], validators=[DataRequired()])
     amount = TextAreaField("Menge", validators=[DataRequired()])
     submit = SubmitField("Hinzufügen")
 

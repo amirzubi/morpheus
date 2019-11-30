@@ -1,7 +1,30 @@
 {% extends "layout.html" %}
 {% block content %}
 <h1>Hallo {{ current_user.username }}.</h1>
-<h2>Positionen ({{ positions_total }})</h2>
+<h2 class="title_section">Dein Portfolio</h2>
+<section class="section-second" style="">
+  <div class="row">
+    <div class="col-md-4">
+          	<table>
+				<tr>
+			        <td class="td-title text-white">Gesamtwert</td>
+			        <td class="td-data text-white">{{ blocks_value_total }}</td>
+				</tr>
+				<tr>
+			        <td class="td-title text-white">Anzahl Coins</td>
+			        <td class="td-data text-white">{{ positions_total }}</td>
+				</tr>
+			</table>
+    </div>
+    <div class="col-md-4">
+    </div>
+        <div class="col-md-4">
+          	{{ fig_div|safe }}
+    </div>
+  </div>
+</section> 
+
+<h2 class="title_section">Positionen ({{ positions_total }})</h2>
 	{% for block in blocks %}
     <section class="portfolio-single-positions">
 	  		<div class="spalten col-12 col-sm-4 col-md-4">

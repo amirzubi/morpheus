@@ -144,7 +144,7 @@ footer {
 
 .section-second {
   background-color: rgb(17, 26, 25);
-  padding: 100px 0 100px 0;
+  padding: 100px 20px 100px 20px;
   text-align: center;
   }
 
@@ -250,6 +250,10 @@ footer {
 /* 4 Spalten */
 .portfolio-single-positions {
 margin: 0 -15px -15px -15px;
+}
+
+.title_section {
+  margin-top: 50px;
 }
 
 .spalten {
@@ -372,6 +376,16 @@ width: 100%;
 
 .modal-footer {
   border: none;
+}
+
+/* Plotly */
+/* Toolbar ausblenden */
+.modebar{
+      display: none !important;
+}
+/* Anmerkungen ausblenden */
+.plotly-notifier{
+      display: none !important;
 }
 
 

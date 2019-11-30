@@ -9,6 +9,11 @@ import os
 import requests
 import json
 import secrets
+import plotly
+import plotly.graph_objects as go
+from matplotlib import pyplot as plt
+import numpy as np
+
 
 ##### Index
 @app.route("/")
@@ -31,8 +36,7 @@ def portfolio():
 		.all()
 	positions_total = len(positions)
 
-# Ziel ist es, die jeweiligen Daten in der Schlaufe in einem DICT oder JSON zu speichern und dann im HTML für jede Position auszugeben.
-	# Neuer Code
+	# Daten der API der Positionen zuordnen
 	blocks = []
 	for position in positions:
 		for x in api:
@@ -46,6 +50,7 @@ def portfolio():
 					"percent_change_1h" : x["percent_change_1h"],
 					"percent_change_24h" : x["percent_change_24h"],
 					"percent_change_7d" : x["percent_change_7d"],
+					"value_raw" : (float(position.amount * float(x["price_usd"]))),
 					"value" : ("${0:.2f}".format(float(position.amount * float(x["price_usd"])))),
 					"price" : ("${0:.7f}".format(float(x["price_usd"]))),
 					"position_date_posted" : position.date_posted.strftime("%d-%m-%Y"),
@@ -53,35 +58,37 @@ def portfolio():
 				}
 				blocks.append(block)
 
+	# Portfolio-Gesamtwert (Alle "value_raw" bzw. "value"-Werte ohne Formatierung zusammenrechnen)
+	blocks_value_total = ("${0:.2f}".format(sum([(key["value_raw"]) for key in blocks])))
+
+	### Plotly Pie Chart
+	# Daten definieren
+	labels = [(key["name"]) for key in blocks]
+	values = [("{0:.2f}".format(key["value_raw"])) for key in blocks]
+	# Chart definieren
+	fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
+	# Andere Farben verwenden
+	fig.update_layout(
+		height=300,
+	    font=dict(
+	        family="Open Sans",
+	        size=15,
+	        color="#ffffff"),
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+		margin=dict(
+			l=0, r=0, t=0, b=0)
+		)
+
+	# Chart als DIV verwenden
+	fig_div = plotly.offline.plot(fig, output_type="div")
+
 	return render_template("portfolio.html", title="Portfolio", 
 		blocks=blocks,
-		positions_total=positions_total)
-
-
-	"""
-	# Alter Code von mir (Funktioniert, nimmt für die Anzeige der Daten im HTML aber nur immer die letzte Kryptowährung in der IF-Schlaufe, da der Wert überschrieben wird)
-	for position in positions:
-		for x in api:
-			if (position.name).lower() == x["id"]:
-				id = x["id"]
-				symbol = x["symbol"]
-				price = float(x["price_usd"])
-				percent_change_1h = x["percent_change_1h"]
-				percent_change_24h = x["percent_change_24h"]
-				percent_change_7d = x["percent_change_7d"]
-				value = ("${0:.2f}".format(float(position.amount * price)))
-				price = ("${0:.7f}".format(float(x["price_usd"])))
-	
-	return render_template("portfolio.html", title="Portfolio", 
-		positions=positions, 
 		positions_total=positions_total,
-		value = value,
-		price=price,
-		symbol=symbol,
-		percent_change_1h=percent_change_1h,
-		percent_change_24h=percent_change_24h,
-		percent_change_7d=percent_change_7d)
-	"""
+		blocks_value_total=blocks_value_total,
+		fig_div=fig_div)
+
 
 ##### Position
 @app.route("/position/<int:position_id>")
