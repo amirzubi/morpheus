@@ -67,12 +67,12 @@ def portfolio():
 	values = [("{0:.2f}".format(key["value_raw"])) for key in blocks]
 	# Chart definieren
 	fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
-	# Andere Farben verwenden
+	# Layout Einstellungen
 	fig.update_layout(
 		height=300,
 	    font=dict(
 	        family="Open Sans",
-	        size=15,
+	        size=18,
 	        color="#ffffff"),
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
@@ -98,6 +98,7 @@ def position(position_id):
 	position = Position.query.get_or_404(position_id)
 	if position.author != current_user:
 		abort(403)
+
 	return render_template("position.html", title=position.name, position=position)
 
 

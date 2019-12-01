@@ -7,28 +7,6 @@
 		      <article>
 			         	<h5>{{ position.name }}</h5>
 		         	<h2>{{ position.amount }} {{ symbol }}</h2>
-		         	<table>
-		         		<tr>
-				            <td class="td-title text-white">Wert</td>
-				            <td class="td-data text-white">{{ value }}</td>
-		        		</tr>
-		        		<tr>
-				            <td class="td-title">Preis</td>
-				            <td class="td-data">{{ price }}</td>
-		        		</tr>
-						<tr>
-				            <td class="td-title">1h Änderung</td>
-				            <td class="td-data">{{ percent_change_1h }}%</td>
-		        		</tr>
-		        		<tr>
-				            <td class="td-title">24h Änderung</td>
-				            <td class="td-data">{{ percent_change_24h }}%</td>
-		        		</tr>
-		        		<tr>
-				            <td class="td-title">7d Änderung</td>
-				            <td class="td-data">{{ percent_change_7d }}%</td>
-		        		</tr>
-		     	</table>
 		     	<small class="text-muted">Zuletzt aktualisiert: {{ position.date_posted.strftime("%d-%m-%Y") }}</small>
 		     	 {% if position.author == current_user %}
 		          <div>

@@ -1,30 +1,25 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1>Hallo {{ current_user.username }}.</h1>
-<h2 class="title_section">Dein Portfolio</h2>
-<section class="section-second" style="">
-  <div class="row">
-    <div class="col-md-4">
-          	<table>
-				<tr>
-			        <td class="td-title text-white">Gesamtwert</td>
-			        <td class="td-data text-white">{{ blocks_value_total }}</td>
-				</tr>
-				<tr>
-			        <td class="td-title text-white">Anzahl Coins</td>
-			        <td class="td-data text-white">{{ positions_total }}</td>
-				</tr>
-			</table>
-    </div>
-    <div class="col-md-4">
-    </div>
-        <div class="col-md-4">
-          	{{ fig_div|safe }}
-    </div>
-  </div>
+<section class="section-main container">
+  <div class="container">
+	  <div class="row">
+	    <div class="col-md-6">
+	          <p>Hi {{ current_user.username }}. <br>Aktueller Wert</p>
+	          <p style="margin: -15px 0 -5px 0px; font-size: 80px; color: #ffffff;">{{ blocks_value_total }}</p>
+	          <p style="font-size: 30px; color: #ffffff; margin-bottom: 50px;">verteilt auf <span style="color: #00AE99;">{{ positions_total }} Kryptowährungen</span></p>
+	          <div class="button">
+            <a href="#positions"><button class="btn btn-outline-info" style="margin-right: 20px;">Positionen anzeigen</button></a>
+            <a href="{{ url_for('new_position') }}"><button class="btn btn-primary">Position hinzufügen</button></a>
+        </div>
+	    </div>
+	    <div class="col-md-6" style="align-items: left;">
+	          	{{ fig_div|safe }}
+	    </div>
+	  </div>
+	</div>
 </section> 
 
-<h2 class="title_section">Positionen ({{ positions_total }})</h2>
+<h2 class="title_section" id="positions">Positionen ({{ positions_total }})</h2>
 	{% for block in blocks %}
     <section class="portfolio-single-positions">
 	  		<div class="spalten col-12 col-sm-4 col-md-4">
@@ -42,8 +37,16 @@
 				            <td class="td-data">{{ block["price"] }}</td>
 		        		</tr>
 		        		<tr>
+				            <td class="td-title">1h Änderung</td>
+				            <td class="td-data">{{ block["percent_change_1h"] }}%</td>
+		        		</tr>
+		        		<tr>
 				            <td class="td-title">24h Änderung</td>
 				            <td class="td-data">{{ block["percent_change_24h"] }}%</td>
+		        		</tr>
+		        		<tr>
+				            <td class="td-title">7d Änderung</td>
+				            <td class="td-data">{{ block["percent_change_7d"] }}%</td>
 		        		</tr>
 		     	</table>
 		     	<small class="text-muted">Zuletzt aktualisiert: {{ block["position_date_posted"] }}</small>
