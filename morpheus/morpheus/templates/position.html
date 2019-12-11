@@ -5,7 +5,7 @@
 	  		<div class="spalten col-6">
 	  			<div class="spalte">
 		      <article>
-			         	<h5>{{ position.name }}</h5>
+			         	<h5>{{ position.name }} | {{ position.exchange }}</h5>
 		         	<h2>{{ position.amount }} {{ symbol }}</h2>
 		     	<small class="text-muted">Zuletzt aktualisiert: {{ position.date_posted.strftime("%d-%m-%Y") }}</small>
 		     	 {% if position.author == current_user %}

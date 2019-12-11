@@ -2,13 +2,14 @@
 {% block content %}
 <section class="section-main container">
   <div class="container">
+  	<div class="vertical-align">
 	  <div class="row">
 	    <div class="col-md-6">
 	          <p>Hi {{ current_user.username }}. <br>Aktueller Wert</p>
 	          <p style="margin: -15px 0 -5px 0px; font-size: 80px; color: #ffffff;">{{ blocks_value_total }}</p>
-	          <p style="font-size: 30px; color: #ffffff; margin-bottom: 50px;">verteilt auf <span style="color: #00AE99;">{{ positions_total }} Kryptowährungen</span></p>
+	          <p style="font-size: 30px; color: #ffffff; margin-bottom: 50px;">verteilt auf <span style="color: #00AE99;">{{ positions_total }} {{ positions_total_one_or_more }}</span></p>
 	          <div class="button">
-            <a href="#positions"><button class="btn btn-outline-info" style="margin-right: 20px;">Positionen anzeigen</button></a>
+            <a href="#positions"><button class="btn btn-outline-info" style="margin-right: 20px;">{{ positions_total_one_or_more }} anzeigen</button></a>
             <a href="{{ url_for('new_position') }}"><button class="btn btn-primary">Position hinzufügen</button></a>
         </div>
 	    </div>
@@ -16,16 +17,17 @@
 	          	{{ fig_div|safe }}
 	    </div>
 	  </div>
+	  </div>
 	</div>
 </section> 
 
-<h2 class="title_section" id="positions">Positionen ({{ positions_total }})</h2>
+<h2 class="title_section" id="positions">{{ positions_total_one_or_more }} ({{ positions_total }})</h2>
 	{% for block in blocks %}
     <section class="portfolio-single-positions">
 	  		<div class="spalten col-12 col-sm-4 col-md-4">
 	  			<div class="spalte">
 		      <article>
-		         	<a href="{{ url_for('position', position_id=block["position_id"]) }}"><h5>{{ block["name"] }}</h5></a>
+		         	<a href="{{ url_for('position', position_id=block["position_id"]) }}"><h5>{{ block["name"] }} | {{ block["exchange"] }}</h5></a>
 		         	<a href="{{ url_for('position', position_id=block["position_id"]) }}"><h2>{{ block["amount"] }} {{ block["symbol"] }}</h2></a>
 		         	<table>
 		         		<tr>

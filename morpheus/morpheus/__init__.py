@@ -16,5 +16,4 @@ login_manager.login_view = "login"
 login_manager.login_message_category = "info"
 login_manager.login_message = "Du musst angemeldet sein, um diese Seite sehen zu können."
 
-
 from morpheus import routes

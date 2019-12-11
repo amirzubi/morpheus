@@ -35,6 +35,11 @@ def portfolio():
 		.order_by(Position.amount.desc()) \
 		.all()
 	positions_total = len(positions)
+	if positions_total == 1:
+		positions_total_one_or_more = "Position"
+	else:
+		positions_total_one_or_more = "Positionen"
+
 
 	# Daten der API der Positionen zuordnen
 	blocks = []
@@ -44,6 +49,7 @@ def portfolio():
 				block = {
 					"id_" : x["id"],
 					"amount" : position.amount,
+					"exchange" : position.exchange,
 					"name" : x["name"],
 					"symbol" : x["symbol"],
 					"price" : float(x["price_usd"]),
@@ -86,6 +92,7 @@ def portfolio():
 	return render_template("portfolio.html", title="Portfolio", 
 		blocks=blocks,
 		positions_total=positions_total,
+		positions_total_one_or_more=positions_total_one_or_more,
 		blocks_value_total=blocks_value_total,
 		fig_div=fig_div)
 
@@ -109,7 +116,7 @@ def position(position_id):
 def new_position():
 	form = PositionForm()
 	if form.validate_on_submit():
-		position = Position(name=form.name.data, amount=form.amount.data, author=current_user)
+		position = Position(name=form.name.data, amount=form.amount.data, exchange=form.exchange.data, author=current_user)
 		db.session.add(position)
 		db.session.commit()
 		# Meldung bei erfolgreichem Erstellen

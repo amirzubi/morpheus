@@ -11,7 +11,8 @@ from morpheus.routes import *
 ##### Neue Position hinzufügen
 class PositionForm(FlaskForm):
     # name = StringField("Coin", validators=[DataRequired()])
-    name = SelectField("Coin", choices=[(x["id"], x["name"]) for x in api], validators=[DataRequired()])
+    name = SelectField("Coin", choices=[(x["name"], x["name"]) for x in api], validators=[DataRequired()])
+    exchange = SelectField("Aufbewahrungsort", choices=[(x["name"], x["name"]) for x in api_exchange] + [("Ledger Nano S", "Ledger Nano S"), ("Ledger Nano X", "Ledger Nano X"), ("Trezor One", "Trezor One"), ("Trezor Model T", "Trezor Model T")] , validators=[DataRequired()])
     amount = TextAreaField("Menge", validators=[DataRequired()])
     submit = SubmitField("Hinzufügen")
 
