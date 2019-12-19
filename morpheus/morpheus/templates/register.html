@@ -4,10 +4,12 @@
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
+                <!-- Titel "Jetzt registrieren" -->
                 <legend class="border-bottom mb-4">Jetzt registrieren</legend>
+                <!-- Nutzername -->
                 <div class="form-group">
                     {{ form.username.label(class="form-control-label") }}
-
+                    <!-- Meldung falls der gewünschte Username nicht den Richtlinien entspricht -->
                     {% if form.username.errors %}
                         {{ form.username(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -19,8 +21,10 @@
                         {{ form.username(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+                <!-- E-Mail-Adresse -->
                 <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
+                    <!-- Meldung falls die gewünschte E-Mail-Adresse nicht den Richtlinien entspricht -->
                     {% if form.email.errors %}
                         {{ form.email(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -32,8 +36,10 @@
                         {{ form.email(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+                <!-- Passwort -->
                 <div class="form-group">
                     {{ form.password.label(class="form-control-label") }}
+                    <!-- Meldung falls die das Passwort nicht den Richtlinien entspricht -->
                     {% if form.password.errors %}
                         {{ form.password(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -45,8 +51,10 @@
                         {{ form.password(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+                <!-- Passwort bestätigen -->
                 <div class="form-group">
                     {{ form.confirm_password.label(class="form-control-label") }}
+                    <!-- Meldung falls das Passwort nicht übereinstimmt -->
                     {% if form.confirm_password.errors %}
                         {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -59,10 +67,12 @@
                     {% endif %}
                 </div>
             </fieldset>
+            <!-- "Registrieren" Button -->
             <div class="form-group">
                 {{ form.submit(class="btn btn-primary") }}
             </div>
         </form>
+    <!-- Falls der User schon einen Account hat (Hinweis) -->
     <div class="border-top pt-3">
         <small class="text-muted">
             Du hast bereits einen Account? <a class="ml-2" href="{{ url_for('login') }}">Login</a>

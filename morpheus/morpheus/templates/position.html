@@ -5,12 +5,15 @@
 	  		<div class="spalten col-6">
 	  			<div class="spalte">
 		      <article>
+                <!-- Name und Anzahl anzeigen -->
 			         	<h5>{{ position.name }} | {{ position.exchange }}</h5>
-		         	<h2>{{ position.amount }} {{ symbol }}</h2>
+		         	<h2>{{ position.amount }}</h2>
 		     	<small class="text-muted">Zuletzt aktualisiert: {{ position.date_posted.strftime("%d-%m-%Y") }}</small>
 		     	 {% if position.author == current_user %}
 		          <div>
+                <!-- Ändern der Position (Link zu edit_position)-->
 		            <a class="btn btn-primary btn-sm mt-1 mb-1" href="{{ url_for('edit_position', position_id=position.id) }}">Bearbeiten</a>
+                <!-- Löschen der Position (Löschen Modal einbinden) -->
 		            <button type="button" class="btn btn-outline-info btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Löschen</button>
 		          </div>
 		        {% endif %}

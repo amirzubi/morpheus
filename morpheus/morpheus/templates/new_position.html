@@ -6,8 +6,10 @@
             <fieldset class="form-group">
             	<!-- Titel aus routes.py entnehmen (legend) -->
                 <legend class="border-bottom mb-4">{{ legend }}</legend>
+                <!-- Formularfeld "Coin" -->
                 <div class="form-group">
                     {{ form.name.label(class="form-control-label") }}
+                    <!-- Meldung falls der gewünschte Coin nicht den Richtlinien entspricht (Eigentlich unmöglich bei einem SelectField) -->
                     {% if form.name.errors %}
                         {{ form.name(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -19,8 +21,10 @@
                         {{ form.name(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+                <!-- Formularfeld "Menge" -->
                 <div class="form-group">
                     {{ form.amount.label(class="form-control-label") }}
+                    <!-- Meldung falls die Eingabe nicht den Richtlinien entspricht (Muss einen Zahlenwert haben) -->
                     {% if form.amount.errors %}
                         {{ form.amount(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -32,8 +36,10 @@
                         {{ form.amount(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+                <!-- Formularfeld "Aufbewahrungsort" -->
                 <div class="form-group">
                     {{ form.exchange.label(class="form-control-label") }}
+                    <!-- Meldung falls der gewünschte Aufbewahrungsort nicht den Richtlinien entspricht (Eigentlich unmöglich bei einem SelectField) -->
                     {% if form.exchange.errors %}
                         {{ form.exchange(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -46,6 +52,7 @@
                     {% endif %}
                 </div>
             </fieldset>
+            <!-- "Hinzufügen" Button -->
             <div class="form-group">
                 {{ form.submit(class="btn btn-primary") }}
             </div>

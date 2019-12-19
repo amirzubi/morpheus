@@ -1,18 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
+<!-- Übersicht -->
 <section class="section-main container">
   <div class="container">
   	<div class="vertical-align">
 	  <div class="row">
 	    <div class="col-md-6">
+	    	<!-- Nutzername und aktueller Portfoliowert anzeigen -->
 	          <p>Hi {{ current_user.username }}. <br>Aktueller Wert</p>
 	          <p style="margin: -15px 0 -5px 0px; font-size: 80px; color: #ffffff;">{{ blocks_value_total }}</p>
+	          <!-- Anzahl Positionen -->
 	          <p style="font-size: 30px; color: #ffffff; margin-bottom: 50px;">verteilt auf <span style="color: #00AE99;">{{ positions_total }} {{ positions_total_one_or_more }}</span></p>
 	          <div class="button">
+	          	<!-- Verlinkung zur ID #positions (Scrollt nach unten) -->
             <a href="#positions"><button class="btn btn-outline-info" style="margin-right: 20px;">{{ positions_total_one_or_more }} anzeigen</button></a>
             <a href="{{ url_for('new_position') }}"><button class="btn btn-primary">Position hinzufügen</button></a>
         </div>
 	    </div>
+	    <!-- Diagramm einbinden -->
 	    <div class="col-md-6" style="align-items: left;">
 	          	{{ fig_div|safe }}
 	    </div>
@@ -20,8 +25,9 @@
 	  </div>
 	</div>
 </section> 
-
+<!-- Anzahl Positionen -->
 <h2 class="title_section" id="positions">{{ positions_total_one_or_more }} ({{ positions_total }})</h2>
+<!-- Positionen durchiterieren und anzeigen -->
 	{% for block in blocks %}
     <section class="portfolio-single-positions">
 	  		<div class="spalten col-12 col-sm-4 col-md-4">

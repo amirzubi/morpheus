@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField, DecimalField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from morpheus.models import User
 from morpheus.api import *
@@ -13,8 +13,8 @@ class PositionForm(FlaskForm):
     # SelectField = DropdownMenu
     name = SelectField("Coin", choices=[(x["name"], x["name"]) for x in api], validators=[DataRequired()])
     exchange = SelectField("Aufbewahrungsort", choices=[(x["name"], x["name"]) for x in api_exchange] + [("Ledger Nano S", "Ledger Nano S"), ("Ledger Nano X", "Ledger Nano X"), ("Trezor One", "Trezor One"), ("Trezor Model T", "Trezor Model T")] , validators=[DataRequired()])
-    # TextAreaField = Eingabefeld
-    amount = TextAreaField("Menge", validators=[DataRequired()])
+    # DecimalField = Eingabefeld (Nur Zahlen, wird zu Float konvertiert)
+    amount = DecimalField("Menge", validators=[DataRequired()])
     # SubmitField = Bestätigungsfeld / Formular absenden
     submit = SubmitField("Hinzufügen")
 
