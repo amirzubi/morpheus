@@ -10,18 +10,22 @@ from morpheus.routes import *
 
 ##### Neue Position hinzufügen
 class PositionForm(FlaskForm):
-    # name = StringField("Coin", validators=[DataRequired()])
+    # SelectField = DropdownMenu
     name = SelectField("Coin", choices=[(x["name"], x["name"]) for x in api], validators=[DataRequired()])
     exchange = SelectField("Aufbewahrungsort", choices=[(x["name"], x["name"]) for x in api_exchange] + [("Ledger Nano S", "Ledger Nano S"), ("Ledger Nano X", "Ledger Nano X"), ("Trezor One", "Trezor One"), ("Trezor Model T", "Trezor Model T")] , validators=[DataRequired()])
+    # TextAreaField = Eingabefeld
     amount = TextAreaField("Menge", validators=[DataRequired()])
+    # SubmitField = Bestätigungsfeld / Formular absenden
     submit = SubmitField("Hinzufügen")
 
 ##### Registrierung Formular
 class RegistrationForm(FlaskForm):
+    # StringField = Eingabefeld (Nur String erlaubt)
     username = StringField('Nutzername',
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('E-Mail',
                         validators=[DataRequired(), Email()])
+    # PasswordField = Eingabefeld für das Passwort (Wird mit Punkten ausgefüllt aus Sicherheitsgründen)
     password = PasswordField('Passwort', validators=[DataRequired()])
     confirm_password = PasswordField('Passwort bestätigen',
                                      validators=[DataRequired(), EqualTo('password')])
@@ -49,6 +53,7 @@ class LoginForm(FlaskForm):
     email = StringField('E-Mail',
                         validators=[DataRequired(), Email()])
     password = PasswordField('Passwort', validators=[DataRequired()])
+    # BooleanField = Auswahlfeld (True or False)
     remember = BooleanField('Anmeldedaten merken')
     submit = SubmitField('Login')
 
@@ -59,6 +64,8 @@ class UpdateAccountForm(FlaskForm):
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('E-Mail',
                         validators=[DataRequired(), Email()])
+    # FileField = Erlaubt es dem User, eine Datei hochzuladen
+    # FileAllowed = Hier werden nur die Dateiformen "JPG" und "PNG" erlaubt
     picture = FileField('Profilbild ändern', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Änderungen speichern')
 

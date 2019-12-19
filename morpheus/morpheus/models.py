@@ -10,6 +10,11 @@ def load_user(user_id):
 
 
 ##### Konto
+## Datenbankeinträge festlegen 
+# (db.DATENTYP) // 
+# nullable = Darf der Begriff nur einmal verwendet werden? Falls nicht -> False
+# primary_key = Hauptschlüssel für die erfasste Position in der Datenbanktabelle
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
@@ -23,6 +28,11 @@ class User(db.Model, UserMixin):
 
 
 ##### Portfolioeintrag
+## Datenbankeinträge festlegen 
+# (db.DATENTYP) // 
+# nullable = Darf der Begriff nur einmal verwendet werden? Falls nicht -> False
+# primary_key = Hauptschlüssel für die erfasste Position in der Datenbanktabelle
+
 class Position(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)

@@ -30,16 +30,10 @@ def index():
 # Falls der User nicht angemeldet ist, wird er zu "Anmelden" weitergeleitet
 @login_required
 def portfolio():
-	# Erfasste Positionen des akutellen Benutzers anzeigen \ Nach dem Wert sortieren \ Alle anzeigen
+	# Erfasste Positionen des akutellen Benutzers \ Nach dem der Anzahl der Kryptowährung sortieren \ Alle anzeigen
 	positions = Position.query.filter_by(author=current_user)\
 		.order_by(Position.amount.desc()) \
 		.all()
-	positions_total = len(positions)
-	if positions_total == 1:
-		positions_total_one_or_more = "Position"
-	else:
-		positions_total_one_or_more = "Positionen"
-
 
 	# Daten der API der Positionen zuordnen
 	blocks = []
@@ -63,6 +57,15 @@ def portfolio():
 					"position_id" : position.id
 				}
 				blocks.append(block)
+
+	# Anzahl Positionen insgesamt
+	positions_total = len(positions)
+	# Falls nur eine Position erfasst wurde
+	if positions_total == 1:
+		positions_total_one_or_more = "Position"
+	# Falls mehr als eine Position erfasst wurde
+	else:
+		positions_total_one_or_more = "Positionen"
 
 	# Portfolio-Gesamtwert (Alle "value_raw" bzw. "value"-Werte ohne Formatierung zusammenrechnen)
 	blocks_value_total = ("${0:.2f}".format(sum([(key["value_raw"]) for key in blocks])))
@@ -133,10 +136,13 @@ def edit_position(position_id):
 	if position.author != current_user:
 		abort(403)
 	form = PositionForm()
+	# Falls die Änderungen den Richtlinien entsprechen und das Formular erfolgreich abgesendet wurde
 	if form.validate_on_submit():
+		# Ändern der Position in der Datenbank
 		position.name = form.name.data
 		position.amount = form.amount.data
 		db.session.commit()
+		# Meldung bei erfolgreichem Ändern
 		flash("Die Position wurde erfolgreich aktualisiert.", "success")
 		return redirect(url_for("position", position_id=position.id))
 	elif request.method == "GET":
@@ -153,8 +159,10 @@ def delete_position(position_id):
 	position = Position.query.get_or_404(position_id)
 	if position.author != current_user:
 		abort(403)
+	# Löschen der Position in der Datenbank
 	db.session.delete(position)
 	db.session.commit()
+	# Meldung bei erfolgreichem Löschen
 	flash("Die Position wurde erfolgreich gelöscht.", "success")
 	return redirect(url_for("index"))
 
@@ -212,6 +220,7 @@ def save_picture(form_picture):
 	random_hex = secrets.token_hex(8)
 	_, f_ext = os.path.splitext(form_picture.filename)
 	picture_fn = random_hex + f_ext
+	# Speicherort definieren
 	picture_path = os.path.join(app.root_path, "static/img/profile_pics", picture_fn)
 	
 	# Grösse vor dem Upload bestimmen

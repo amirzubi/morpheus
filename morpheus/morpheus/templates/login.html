@@ -4,9 +4,11 @@
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
+                <!-- Anmelden (Titel) -->
                 <legend class="border-bottom mb-4">Anmelden</legend>
                 <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
+                     <!-- Meldung falls die E-Mail-Adresse nicht den Richtlinien entspricht -->
                     {% if form.email.errors %}
                         {{ form.email(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -20,6 +22,7 @@
                 </div>
                 <div class="form-group">
                     {{ form.password.label(class="form-control-label") }}
+                    <!-- Meldung falls das Passwort nicht stimmt -->
                     {% if form.password.errors %}
                         {{ form.password(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -39,10 +42,12 @@
             <div class="form-group">
                 {{ form.submit(class="btn btn-primary") }}
             </div>
+            <!-- Passwort vergesssen? (Folgt in einem späteren Update) -->
             <small class="text-muted ml-2">
                 <a href="#">Passwort vergessen?</a>
             </small>
         </form>
+    <!-- Noch keinen Account? -> Weiterleitung zu "Registrieren" -->
     <div class="border-top pt-3">
         <small class="text-muted">
             Noch keinen Account? <a class="ml-2" href="{{ url_for('register') }}">Jetzt registrieren</a>
