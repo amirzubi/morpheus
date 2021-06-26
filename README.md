@@ -30,24 +30,24 @@ Zusätzlich sollte der Gesamtwert des Portfolios ausgegeben werden. Dabei wird f
 The App is built with the following modules:
 
 1. Python
-2. Flask
+2. Flask\
    Flask is a lightweight WSGI web application framework. It is designed to make getting started quick and easy, with the ability to scale up to complex applications.
-3. SQLAlchemy
+3. SQLAlchemy\
    SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.
-4. Bcyrpt-Flask
+4. Bcyrpt-Flask\
    Flask-Bcrypt is a Flask extension that provides bcrypt hashing utilities for your application.
-5. Flask-Login
+5. Flask-Login\
    Flask-Login provides user session management for Flask. It handles the common tasks of logging in, logging out, and remembering your users' sessions over extended periods of time.
-6. Pillow-PIL
+6. Pillow-PIL\
    Pillow wrapper for PIL compatibility
-7. Flask-WTF
+7. Flask-WTF\
    Simple integration of Flask and WTForms, including CSRF, file upload, and reCAPTCHA.
-8. Requests
+8. Requests\
    Requests is a simple, yet elegant HTTP library.
 
 ## Installation
 
-Ensure that you are in your main directory (Normally: C:\).
+Ensure that you are in your main directory (Normally: C:\).\
 You can install all modules all at once with the following command:
 
 ```
