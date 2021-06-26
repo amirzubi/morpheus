@@ -48,8 +48,7 @@ The App is built with the following modules:
 ## Installation
 
 Ensure that you are in your main directory (Normally: C:\).
-
-### All Modules
+You can install all modules all at once with the following command:
 
 ```
 py -m pip install Flask Flask-SQLAlchemy Bcrypt-Flask Flask-Login Pillow-PIL Flask-WTF requests
