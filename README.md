@@ -1,4 +1,4 @@
-:warning: V1 is not longer working due to the changes in the Coinmarketcap API.
+:warning: v1.0 is not longer working due to the changes in the Coinmarketcap API.
 
 # Ausgangslage
 
