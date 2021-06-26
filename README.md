@@ -105,8 +105,4 @@ py -m pip install -U requests
 python run.py
 ```
 
-By default, flask will run on port 5000.
-
-Navigate to URL http://localhost:5000
-
-![alt text](flowchart.png)
+2. Navigate to URL http://localhost:5000 (By default, flask will run on port 5000.)
