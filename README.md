@@ -21,7 +21,7 @@ The course data are taken from the API of the website https://coinmarketcap.com.
 ## Data Output
 
 The web application shows the current prices and the total value of the individual portfolio entries. The following is calculated (example):\
-`bitcoin_portfoliovalue = bitcoin_amount * bitcoin_price`\\
+`bitcoin_portfoliovalue = bitcoin_amount * bitcoin_price`<br><br>
 In addition, the total value of the portfolio should be output. The following is calculated (example):\
 `all_portfoliovalue = (bitcoin_amount * bitcoin_price) + (ethereum_amount * ethereum_price)...`
 
