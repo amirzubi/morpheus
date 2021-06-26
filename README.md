@@ -1,29 +1,31 @@
 :warning: v1.0 is not longer working due to the changes in the Coinmarketcap API.
 
-# Ausgangslage
+# 1. Starting Position
 
-Viele Kryptoportfolioapps brauchen entweder viel Speicher oder haben nicht die aktuellsten Kurse. Des Weiteren möchte ich meine vertraulichen Daten nicht einer App zur Verfügung stellen. Hierbei sollte eine individuelle Lösung Abhilfe schaffen.
+Many crypto portfolio apps either need a lot of storage or do not have the most up-to-date prices. Furthermore, I do not want to make my confidential data available to an app provider. An individual solution should remedy this.
 
-# Funktion/Projektidee
+# 2. Functions
 
-Dem User sollte es möglich sein, sein eigenes Kryptowährungsportfolio zu erstellen. Hierzu sollte es ihm möglich sein, selbst Kryptowährungen dem Portfolio hinzuzufügen oder zu löschen. Zusätzlich kann der Betrag der jeweiligen Währungen angegeben werden. Die Funktion sollte den aktuellen Kurs der Kryptowährungen von der Webseite https://coinmarketcap.com entnehmen und dem User live wiedergeben. Zusätzlich sollten diese Daten automatisch bei einer Kursänderung aktualisiert werden. Der Gesamtwert des Portfolios und die minütige Änderungen dessen sollte dem User angezeigt werden. Zusätzlich könnte ein Diagramm angezeigt werden, welches die wöchtentliche Veränderung des Gesamtwertes des Portfolios darlegt.
+The user is able to create his own cryptocurrency portfolio. To do this, he can add or delete cryptocurrencies from the portfolio himself. In addition, the amount of the respective currencies can be specified. The function should take the current rate of the cryptocurrencies from the API of the website https://coinmarketcap.com and display it live to the user. This data is updated automatically when the price changes. The total value of the portfolio and the minute changes to it should be displayed to the user. In addition, a diagram could be displayed showing the weekly change in the total value of the portfolio.
 
-# Workflow
+# 3. Workflow
 
-## Dateneingabe
+## Data Entry
 
-Der User kann Kryptowährungen dem Portfolio hinzufügen oder löschen. Er kann zusätzlich den Betrag der jeweiligen Währung festlegen.
+The user can add or delete cryptocurrencies from the portfolio. He can also specify the amount of the respective currency.
 
-## Datenverarbeitung/Speicherung
+## Data Processing / Storage
 
-Die Kursdaten werden der Webseite https://coinmarketcap.com entnommen. Die Daten sollten sich automatisch bei einer Kursänderung aktualisieren. Die Portfolioeinträge des Users werden in einer .json Datei gesichert.
+The course data are taken from the API of the website https://coinmarketcap.com. The data should update automatically when the price changes. The user's portfolio entries are saved in a .json file.
 
-## Datenausgabe
+## Data Output
 
-Die Webapplikation sollte die aktuellen Kurse und den Totalwert der einzelnen Portfolioeinträge wiedergeben. Dabei wird folgendes berechnet (Beispiel):<br>`bitcoin_portfoliowert = bitcoin_betrag * bitcoin_kurs`<br><br>
-Zusätzlich sollte der Gesamtwert des Portfolios ausgegeben werden. Dabei wird folgendes berechnet (Beispiel):<br>`all_portfoliowert = (bitcoin_betrag * bitcoin_kurs) + (ethereum_betrag * ethereum_kurs)...`
+The web application shows the current prices and the total value of the individual portfolio entries. The following is calculated (example):\
+`bitcoin_portfoliovalue = bitcoin_amount * bitcoin_price`\\
+In addition, the total value of the portfolio should be output. The following is calculated (example):\
+`all_portfoliovalue = (bitcoin_amount * bitcoin_price) + (ethereum_amount * ethereum_price)...`
 
-# Modules installation
+# 4. Modules
 
 ## Overview
 
@@ -97,7 +99,7 @@ py -m pip install -U Flask-WTF
 py -m pip install -U requests
 ```
 
-# Running the project
+# 5. Running the project
 
 1. Ensure that you are in the project home directory. Start the app by running the following command:
 
@@ -106,3 +108,9 @@ python run.py
 ```
 
 2. Navigate to URL http://localhost:5000 (By default, flask will run on port 5000.)
+
+# 6. Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
