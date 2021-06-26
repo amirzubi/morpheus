@@ -1,3 +1,5 @@
+:warning: V1 is not longer working due to the changes in the Coinmarketcap API.
+
 # Ausgangslage
 
 Viele Kryptoportfolioapps brauchen entweder viel Speicher oder haben nicht die aktuellsten Kurse. Des Weiteren möchte ich meine vertraulichen Daten nicht einer App zur Verfügung stellen. Hierbei sollte eine individuelle Lösung Abhilfe schaffen.
@@ -45,47 +47,53 @@ The App is built with the following modules:
 
 ## Installation
 
-1. Install Python: https://www.python.org/downloads/
+Ensure that you are in your main directory (Normally: C:\).
 
-2. Install Flask
-   Ensure that you are in your main directory (Normally: C:\). Open the CMD and run the following command:
+### All Modules
+
+```
+py -m pip install Flask Flask-SQLAlchemy Bcrypt-Flask Flask-Login Pillow-PIL Flask-WTF requests
+
+```
+
+### Flask
 
 ```
 py -m pip install Flask
 
 ```
 
-3. Install Flask-SQLAlchemy
+### Flask-SQLAlchemy
 
 ```
 py -m pip install -U Flask-SQLAlchemy
 ```
 
-4. Install Bcyrpt-Flask
+### Bcyrpt-Flask
 
 ```
 py -m pip install -U Bcrypt-Flask
 ```
 
-5. Install Flask-Login
+### Flask-Login
 
 ```
 py -m pip install -U Flask-Login
 ```
 
-6. Install Pillow-PIL
+### Pillow-PIL
 
 ```
 py -m pip install -U Pillow-PIL
 ```
 
-7. Install Flask-WTF
+### Flask-WTF
 
 ```
 py -m pip install -U Flask-WTF
 ```
 
-8. Install Requests
+### Requests
 
 ```
 py -m pip install -U requests
