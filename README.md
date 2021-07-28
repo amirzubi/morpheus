@@ -1,4 +1,4 @@
-![GitHub last commit](https://img.shields.io/github/last-commit/amirzubi/wordpress-code-snippets?color=00ae99)
+![GitHub last commit](https://img.shields.io/github/last-commit/amirzubi/morpheus?color=00ae99)
 
 :warning: v1.0 is not longer working due to the changes in the Coinmarketcap API.
 
